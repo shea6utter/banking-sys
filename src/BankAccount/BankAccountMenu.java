@@ -32,15 +32,24 @@ public class BankAccountMenu {
                 System.out.println("2 | No Service Charge Checking Account");
                 System.out.print("Select a Checking Account Type: ");
                 int chType = s.nextInt();
+                s.nextLine();
+                System.out.println();
 
-                double check;
+                System.out.print("Number of Check/s: ");
+                int numCheck = s.nextInt();
+                s.nextLine();
+
+                System.out.print("Amount to write in check:  ");
+                double check = s.nextDouble();
+                System.out.println();
+
                     switch (chType) {  
                         case 1:
                             final ServiceChargeChecking yesCheck = new ServiceChargeChecking(n, an, b);
                             System.out.println("== Account Overview ==");
-                            System.out.print(yesCheck);
+                            yesCheck.setNumberOfChecksWritten(numCheck);
                             yesCheck.writeCheck(check);
-                            System .out.print(yesCheck);
+                            System.out.print(yesCheck);
                             System.out.println();
                             break;
                         case 2:
@@ -56,20 +65,13 @@ public class BankAccountMenu {
                             break;
                     }
             } if (t == 2) {
-
+                CertificationOfDeposit cod = new CertificationOfDeposit(n, an, b);  
             } if (t == 3) {
 
-            } else {
-                System.out.println("Invalid input. Please try again.");
             }
         } while (t < 0 || t > 3);
 
-        System.out.println("Account Type: ");
-        System.out.println("1 | Checking Account");
-        System.out.println("2 | Certificate of Deposit");
-        System.out.println("3 | Savings Account");
-        System.out.print("Select Account Type: ");
-        t = s.nextInt();
+        System.out.println("");
 
         s.close();
     }

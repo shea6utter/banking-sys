@@ -62,7 +62,6 @@ public class ServiceChargeChecking extends CheckingAccount {
                     System.out.println("Not enough balance.");
                 }
             }
-            ++this.numberOfChecksWritten;
             this.postServiceCharge();
             this.withdraw(b);
         }
@@ -79,8 +78,7 @@ public class ServiceChargeChecking extends CheckingAccount {
     
     @Override
     public String toString() {
-        String str = super.toString() + "\nService Checking Account Type\nNumber of checks:";
-        str += this.numberOfChecksWritten;
+        String str = super.toString() + "\nService Checking Account Type\nNumber of checks: " + this.numberOfChecksWritten;
         str = str + "\nService Charge Account: " + this.serviceChargeAccount + "\n";
         if (this.getNumberOfChecksWritten() > 5) {
             str = str + "\nService Charge for excess number of checks: " + this.getServiceChargeCheck() + "\n";

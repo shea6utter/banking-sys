@@ -42,17 +42,22 @@ public class CertificationOfDeposit extends BankAccount {
       this.maturityMonths = mm;
    }
 
-   public void withdraw(double n) {}
+   public void withdraw(double b) {
+      
+   }
    
-   public void withdraw() {}
+   public void withdraw() {
+
+   }
 
    public void createMonthlyStatement() {
-
+      this.balance += this.getBalance() * this.interestRate;
+      System.out.println(this.toString());
    }
 
    @Override
    public String toString() {
-      String str = super.toString();
+      String str = super.toString() + "\nDeposited amount: " + getBalance() + "\nAmount withdrawn: ";
       return str;
    }
 }
