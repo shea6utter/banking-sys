@@ -7,7 +7,7 @@ public class BankAccountMenu {
     public static void main(final String[] args) {
         Scanner s = new Scanner(System.in);
 
-        System.out.println("== Menu ==");
+        System.out.println("== Account Input ==");
         System.out.print("Account Number: ");
         int an = s.nextInt();
         s.nextLine();
@@ -18,27 +18,29 @@ public class BankAccountMenu {
 
         int t;
         do {
-            System.out.println("Account Type: ");
+            System.out.println("== Account Type ==");
             System.out.println("1 | Checking Account");
             System.out.println("2 | Certificate of Deposit");
             System.out.println("3 | Savings Account");
+            System.out.println("4 | Quit");
             System.out.print("Select Account Type: ");
             t = s.nextInt();
             System.out.println();
 
             if (t == 1) {
-                System.out.println("Checking Account Type: ");
-                System.out.println("1 | Service Charge Checking Account");
-                System.out.println("2 | No Service Charge Checking Account");
+                System.out.println("== Checking Account Type ==");
+                System.out.println("1 | Service Charge Checking Account\n2 | No Service Charge Checking Account");
                 System.out.print("Select a Checking Account Type: ");
                 int chType = s.nextInt();
                 s.nextLine();
                 System.out.println();
-
+                
+                // 0 for none
                 System.out.print("Number of Check/s: ");
                 int numCheck = s.nextInt();
                 s.nextLine();
 
+                // 0 for none
                 System.out.print("Amount to write in check:  ");
                 double check = s.nextDouble();
                 System.out.println();
@@ -46,6 +48,7 @@ public class BankAccountMenu {
                     switch (chType) {  
                         case 1:
                             final ServiceChargeChecking yesCheck = new ServiceChargeChecking(n, an, b);
+                            
                             System.out.println("== Account Overview ==");
                             yesCheck.setNumberOfChecksWritten(numCheck);
                             yesCheck.writeCheck(check);
@@ -53,21 +56,52 @@ public class BankAccountMenu {
                             System.out.println();
                             break;
                         case 2:
-                            NoServiceChargeChecking noCheck = new NoServiceChargeChecking(n, an, b);
+                            final NoServiceChargeChecking noCheck = new NoServiceChargeChecking(n, an, b);
 
                             System.out.println("== Account Overview ==");
                             noCheck.createMonthlyStatement();
+                            
                             noCheck.writeCheck(check);
                             noCheck.createMonthlyStatement();
                             break;
+                        case 3:
+                            final HighInterestChecking hiCheck = new HighInterestChecking(n, an, b);
+
+                            System.out.println("== Account Overview ==");
+
+
                         default:
                             System.out.println("Invalid input. Please try again.");
                             break;
                     }
             } if (t == 2) {
-                CertificationOfDeposit cod = new CertificationOfDeposit(n, an, b);  
-            } if (t == 3) {
+                CertificationOfDeposit cod = new CertificationOfDeposit(n, an, b);
 
+                
+                System.out.println("== Account Overview ==");
+
+                cod.createMonthlyStatement();
+                
+                cod.createMonthlyStatement();
+
+            } if (t == 3) {
+                System.out.println("== Savings Account Menu ==");
+                System.out.println("1 | No Min. Balance, Low Interest Rate");
+                System.out.println("2 | Has Min. Balance, High Interest Rate");
+                System.out.print("Select option: ");
+                int saveOpt = s.nextInt();
+                s.nextLine();
+
+                    if (saveOpt == 1) {
+                        SavingsAccount save = new SavingsAccount(n, an, b);                        
+
+                    } if (saveOpt == 2) {
+                        HighInterestSavings hiSave = new HighInterestSavings(n, an, b);
+                        
+                    }
+            } if (t == 4) {
+                System.out.println("== Quitting Program ==");
+                System.exit(0);
             }
         } while (t < 0 || t > 3);
 

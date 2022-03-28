@@ -1,6 +1,6 @@
 package src.BankAccount;
 
-public abstract class SavingsAccount extends BankAccount {
+public class SavingsAccount extends BankAccount {
    private static final double INTEREST_RATE = 0.03;
    protected double interestRate;
    
@@ -34,6 +34,8 @@ public abstract class SavingsAccount extends BankAccount {
    
    @Override
    public String toString() {
-      return super.toString();
+      String str = super.toString() + "\nSavings Account Type\n";
+      str = "Interest Rate: " + this.interestRate;
+      return str;
    }
 }

@@ -16,12 +16,12 @@ take into consideration basic banking concepts.
 - Self-assessment Rubric
 
 #### Classes
-1. BankAccount -
+1. BankAccount - DONE
 2. BankAccountMenu - MAIN
-3. CheckingAccount -
-4. HighInterestChecking -
-5. NoServiceChargeChecking - 
+3. CheckingAccount - DONE
+4. HighInterestChecking - DONE
+5. NoServiceChargeChecking - DONE
 6. SavingsAccount - 
-7. ServiceChargeChecking - 
+7. ServiceChargeChecking - DONE
 8. CertificateOfDeposit -
 9. HighInterestSavings -
