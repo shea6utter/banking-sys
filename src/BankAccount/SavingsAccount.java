@@ -15,7 +15,7 @@ public abstract class SavingsAccount extends BankAccount {
   }
 
    public double getInterestRate() {
-      return interestRate;
+      return this.interestRate;
    }
 
    public void setInterestRate(final double ir) {
