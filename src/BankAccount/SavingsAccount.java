@@ -9,7 +9,7 @@ public abstract class SavingsAccount extends BankAccount {
       this.interestRate = 0.05;
    }
 
-   SavingsAccount(final String n, final int an, final double b, final double ir) {
+   public SavingsAccount(final String n, final int an, final double b, final double ir) {
       super(n, an, b);
       this.interestRate = ir;
   }
