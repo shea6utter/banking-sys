@@ -22,16 +22,33 @@ public class HighInterestSavings extends SavingsAccount {
       return this.minimumBalance;
    }
 
-   public boolean verifyMinimumBalance(double mb) {
+   public 
+
+   public boolean verifyMinimumBalance(final double mb) {
       return mb >= this.minimumBalance;
    }
 
+   public double getInterestRate() {
+      return this.interestRate;
+   }
+
+   public void setInterestRate(final double ir) {
+      this.interestRate = ir;
+   }
+
    public void withdraw(final double mb) {
-      this.withdraw(mb);
+      final double tempAmount = this.getBalance() - mb;
+      if (this.verifyMinimumBalance(tempAmount)) {
+         this.balance -= mb;
+      } else {
+         System.out.println("Insufficient Balance. ");
+      }
    }
 
    @Override
    public String toString() {
-      return super.toString();
+      String str = super.toString() + "\nHigh Interest Savings Account Type";
+      str = str + "\nRequired Minimum Balance: " + this.getMinimumBalance() + "\nInterest Rate: " + this.getInterestRate();
+      return str;
    }
 }

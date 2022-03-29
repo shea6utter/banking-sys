@@ -6,7 +6,7 @@ public class SavingsAccount extends BankAccount {
    
    public SavingsAccount(final String n, final int an, final double b) {
       super(n, an, b);
-      this.interestRate = 0.05;
+      this.interestRate = 0.03;
    }
 
    public SavingsAccount(final String n, final int an, final double b, final double ir) {
@@ -26,7 +26,6 @@ public class SavingsAccount extends BankAccount {
       this.balance += this.getBalance() * this.interestRate;
    }
 
-   @Override
    public void createMonthlyStatement() {
       this.postInterest();
       System.out.println(this.toString());
@@ -34,8 +33,8 @@ public class SavingsAccount extends BankAccount {
    
    @Override
    public String toString() {
-      String str = super.toString() + "\nSavings Account Type\n";
-      str = "Interest Rate: " + this.interestRate;
+      String str = super.toString() + "\nLow Interest Savings Account Type";
+      str = str + "\nRequired Minimum Balance: 0.00" + "\nInterest Rate: " + this.getInterestRate();
       return str;
    }
 }

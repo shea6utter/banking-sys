@@ -60,7 +60,6 @@ public class BankAccountMenu {
 
                             System.out.println("== Account Overview ==");
                             noCheck.createMonthlyStatement();
-                            
                             noCheck.writeCheck(check);
                             noCheck.createMonthlyStatement();
                             break;
@@ -91,13 +90,64 @@ public class BankAccountMenu {
                 System.out.print("Select option: ");
                 int saveOpt = s.nextInt();
                 s.nextLine();
+                System.out.println();
 
                     if (saveOpt == 1) {
-                        SavingsAccount save = new SavingsAccount(n, an, b);                        
+                        SavingsAccount save = new SavingsAccount(n, an, b);  
+                        System.out.println("== Account Overview ==");
+                        save.createMonthlyStatement();
+                        System.out.println();
 
+                        System.out.println("== Withdraw Savings? ==");
+                        System.out.println("1 | Yes\n2 | No");
+                        System.out.print("Select option: ");
+                        int wdOpt = s.nextInt();
+                        s.nextLine();
+                        System.out.println("");
+                        
+                            if (wdOpt == 1) {
+                                System.out.println("== Withdrawal ==");
+                                System.out.print("Amount to withdraw: ");
+                                double amount = s.nextDouble();
+
+                                double totalSave = save.getBalance() - amount;
+                                
+                                System.out.println("Amount Withdrawn: " + amount);
+                                System.out.println("Account Balance: " + totalSave);
+                                System.out.println();
+                            } if (wdOpt == 2) {
+                                System.out.println(save);
+                            }
                     } if (saveOpt == 2) {
                         HighInterestSavings hiSave = new HighInterestSavings(n, an, b);
+
+                        System.out.println("== Account Overview ==");
+                        hiSave.createMonthlyStatement();
+                        System.out.println();
+
+                        System.out.println("== Withdraw Savings? ==");
                         
+                        System.out.println("1 | Yes\n2 | No");
+                        System.out.print("Select option: ");
+                        int wdOpt = s.nextInt();
+                        s.nextLine();
+                        System.out.println("");
+
+                        if (wdOpt == 1) {
+                            System.out.println("== Withdrawal ==");
+                            System.out.print("Amount to withdraw: ");
+                            double amount = s.nextDouble();
+
+                            System.out.print("Amount is within Min. Balance: " + hiSave.verifyMinimumBalance(amount));
+                            System.out.println();
+                            
+                            hiSave.withdraw(amount);
+                            System.out.println(hiSave);;
+                        } if (wdOpt == 2) {
+                            System.out.println(hiSave);
+                        }
+
+
                     }
             } if (t == 4) {
                 System.out.println("== Quitting Program ==");
@@ -105,7 +155,7 @@ public class BankAccountMenu {
             }
         } while (t < 0 || t > 3);
 
-        System.out.println("");
+        System.out.println("Thank you for your time.");
 
         s.close();
     }
