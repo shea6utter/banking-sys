@@ -29,7 +29,7 @@ public class BankAccountMenu {
 
             if (t == 1) {
                 System.out.println("== Checking Account Type ==");
-                System.out.println("1 | Service Charge Checking Account\n2 | No Service Charge Checking Account");
+                System.out.println("1 | Service Charge Checking Account\n2 | No Service Charge Checking Account\n3 | High Interest Checking Account");
                 System.out.print("Select a Checking Account Type: ");
                 int chType = s.nextInt();
                 s.nextLine();
@@ -41,7 +41,7 @@ public class BankAccountMenu {
                 s.nextLine();
 
                 // 0 for none
-                System.out.print("Amount to write in check:  ");
+                System.out.print("Amount to write in check: ");
                 double check = s.nextDouble();
                 System.out.println();
 
@@ -51,7 +51,9 @@ public class BankAccountMenu {
                             
                             System.out.println("== Account Overview ==");
                             yesCheck.setNumberOfChecksWritten(numCheck);
+                            yesCheck.createMonthlyStatement();
                             yesCheck.writeCheck(check);
+                            yesCheck.createMonthlyStatement();
                             System.out.print(yesCheck);
                             System.out.println();
                             break;
@@ -67,15 +69,16 @@ public class BankAccountMenu {
                             final HighInterestChecking hiCheck = new HighInterestChecking(n, an, b);
 
                             System.out.println("== Account Overview ==");
-
-
+                            hiCheck.createMonthlyStatement();
+                            hiCheck.writeCheck(check);
+                            hiCheck.createMonthlyStatement();
+                            break;
                         default:
                             System.out.println("Invalid input. Please try again.");
                             break;
                     }
             } if (t == 2) {
                 CertificationOfDeposit cod = new CertificationOfDeposit(n, an, b);
-
                 
                 System.out.println("== Account Overview ==");
 
@@ -146,8 +149,6 @@ public class BankAccountMenu {
                         } if (wdOpt == 2) {
                             System.out.println(hiSave);
                         }
-
-
                     }
             } if (t == 4) {
                 System.out.println("== Quitting Program ==");
@@ -155,7 +156,7 @@ public class BankAccountMenu {
             }
         } while (t < 0 || t > 3);
 
-        System.out.println("Thank you for your time.");
+        System.out.println("== Thank you for your time. ==\n== Quitting Program ==");
 
         s.close();
     }

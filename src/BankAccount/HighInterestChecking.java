@@ -37,6 +37,6 @@ public class HighInterestChecking extends NoServiceChargeChecking {
     
     @Override
     public String toString() {
-        return super.toString();
+       return super.toString();
     }
 }

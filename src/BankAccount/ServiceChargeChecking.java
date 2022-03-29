@@ -72,7 +72,6 @@ public class ServiceChargeChecking extends CheckingAccount {
     
     @Override
     public void createMonthlyStatement() {
-        System.out.println(super.toString());
         System.out.println(this.toString());
     }
     

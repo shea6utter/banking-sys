@@ -33,8 +33,7 @@ public class SavingsAccount extends BankAccount {
    
    @Override
    public String toString() {
-      String str = super.toString() + "\nLow Interest Savings Account Type";
-      str = str + "\nRequired Minimum Balance: 0.00" + "\nInterest Rate: " + this.getInterestRate();
+      String str = super.toString();
       return str;
    }
 }

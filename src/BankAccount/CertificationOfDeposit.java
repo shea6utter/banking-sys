@@ -48,7 +48,7 @@ public class CertificationOfDeposit extends BankAccount {
 
   @Override
    public void withdraw(final double b) {
-      this.balance = b;
+      this.postInterest();
    }
    
    public void withdraw() {
@@ -62,7 +62,7 @@ public class CertificationOfDeposit extends BankAccount {
 
    @Override
    public String toString() {
-      String str = super.toString() + "\nDeposited amount: " + getBalance();
+      String str = super.toString() + "\nMaturity Months: " + getMaturityMonths();
       str = "\nCurrent CD Month: " + this.getCurrentCDMonth();
       return str;
    }

@@ -22,7 +22,9 @@ public class HighInterestSavings extends SavingsAccount {
       return this.minimumBalance;
    }
 
-   public 
+   public void setMinimumBalance(final double mb) {
+      this.minimumBalance = mb;
+   }
 
    public boolean verifyMinimumBalance(final double mb) {
       return mb >= this.minimumBalance;
@@ -45,10 +47,23 @@ public class HighInterestSavings extends SavingsAccount {
       }
    }
 
+
+   @Override
+   public void postInterest() {
+      this.balance += this.getBalance() * this.interestRate;
+   }
+
+   @Override
+   public void createMonthlyStatement() {
+      this.postInterest();
+      System.out.println(this.toString());
+   }
+
    @Override
    public String toString() {
-      String str = super.toString() + "\nHigh Interest Savings Account Type";
-      str = str + "\nRequired Minimum Balance: " + this.getMinimumBalance() + "\nInterest Rate: " + this.getInterestRate();
+      String str = super.toString() + "\nHigh Interest Savings Account Type\nRequired Minimum Balance: ";
+      str += this.getMinimumBalance();
+      str = str + "\nInterest Rate: " + this.getInterestRate();
       return str;
    }
 }
