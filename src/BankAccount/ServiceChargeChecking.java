@@ -71,6 +71,11 @@ public class ServiceChargeChecking extends CheckingAccount {
     }
     
     @Override
+    public void deposit(final double b) {
+        this.getBalance() ;
+    }
+
+    @Override
     public void createMonthlyStatement() {
         System.out.println(this.toString());
     }

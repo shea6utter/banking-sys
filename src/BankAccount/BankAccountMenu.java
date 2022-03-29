@@ -79,11 +79,14 @@ public class BankAccountMenu {
                     }
             } if (t == 2) {
                 CertificationOfDeposit cod = new CertificationOfDeposit(n, an, b);
-                
-                System.out.println("== Account Overview ==");
 
+                System.out.print("== Certificate of Deposit ==");
+                System.out.print("Current CD");
+                System.out.println("== Account Overview ==");
                 cod.createMonthlyStatement();
-                
+                System.out.print("Current CD Month/s: ");
+                int cdM = s.nextInt();
+                cod.setCurrentCDMonth(cdM);
                 cod.createMonthlyStatement();
 
             } if (t == 3) {
@@ -129,7 +132,6 @@ public class BankAccountMenu {
                         System.out.println();
 
                         System.out.println("== Withdraw Savings? ==");
-                        
                         System.out.println("1 | Yes\n2 | No");
                         System.out.print("Select option: ");
                         int wdOpt = s.nextInt();
@@ -141,11 +143,19 @@ public class BankAccountMenu {
                             System.out.print("Amount to withdraw: ");
                             double amount = s.nextDouble();
 
-                            System.out.print("Amount is within Min. Balance: " + hiSave.verifyMinimumBalance(amount));
+                            double B = b;
+
+                            System.out.print("Balance is within Min. Balance after withdrawal: " + hiSave.verifyMinimumBalance(B));
+
                             System.out.println();
                             
-                            hiSave.withdraw(amount);
-                            System.out.println(hiSave);;
+                            if (hiSave.verifyMinimumBalance(B) == true) {
+                                hiSave.withdraw(amount);
+                                System.out.println(hiSave);
+                            } else if (!hiSave.verifyMinimumBalance(B) == true) {
+                                System.out.println("Insufficient Balance.\n");
+                                System.out.println(hiSave);
+                            }
                         } if (wdOpt == 2) {
                             System.out.println(hiSave);
                         }
@@ -159,5 +169,6 @@ public class BankAccountMenu {
         System.out.println("== Thank you for your time. ==\n== Quitting Program ==");
 
         s.close();
+        
     }
 }
