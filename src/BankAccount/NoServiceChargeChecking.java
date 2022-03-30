@@ -43,7 +43,7 @@ public class NoServiceChargeChecking extends CheckingAccount {
             this.balance -= a;
         }
         else {
-            System.out.println("Insufficient balance.");
+            System.out.println("Insufficient balance.\n");
         }
     }
     

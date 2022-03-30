@@ -54,7 +54,6 @@ public class BankAccountMenu {
                             yesCheck.createMonthlyStatement();
                             yesCheck.writeCheck(check);
                             yesCheck.createMonthlyStatement();
-                            System.out.print(yesCheck);
                             System.out.println();
                             break;
                         case 2:
@@ -63,6 +62,7 @@ public class BankAccountMenu {
                             System.out.println("== Account Overview ==");
                             noCheck.createMonthlyStatement();
                             noCheck.writeCheck(check);
+                            System.out.println(noCheck + "\n");
                             noCheck.createMonthlyStatement();
                             break;
                         case 3:
@@ -71,6 +71,7 @@ public class BankAccountMenu {
                             System.out.println("== Account Overview ==");
                             hiCheck.createMonthlyStatement();
                             hiCheck.writeCheck(check);
+                            System.out.println(hiCheck + "\n");
                             hiCheck.createMonthlyStatement();
                             break;
                         default:
@@ -80,13 +81,22 @@ public class BankAccountMenu {
             } if (t == 2) {
                 CertificationOfDeposit cod = new CertificationOfDeposit(n, an, b);
 
-                System.out.print("== Certificate of Deposit ==");
-                System.out.print("Current CD");
+                System.out.println("== Certificate of Deposit ==");
+                System.out.print("Months per term: ");
+                int codmm = s.nextInt();
+                s.nextLine();
+                System.out.print("Current month in the term: ");
+                int codcm = s.nextInt();
+                s.nextLine();
+                System.out.print("Rate of Interest: ");
+                double codr = s.nextDouble();
+                s.nextLine();
                 System.out.println("== Account Overview ==");
-                cod.createMonthlyStatement();
-                System.out.print("Current CD Month/s: ");
-                int cdM = s.nextInt();
-                cod.setCurrentCDMonth(cdM);
+                cod.setInterestRate(codr);                
+                cod.setCurrentCDMonth(codcm);
+                cod.setMaturityMonths(codmm);
+                cod.postInterest();
+                System.out.println();
                 cod.createMonthlyStatement();
 
             } if (t == 3) {
@@ -119,10 +129,11 @@ public class BankAccountMenu {
                                 double totalSave = save.getBalance() - amount;
                                 
                                 System.out.println("Amount Withdrawn: " + amount);
-                                System.out.println("Account Balance: " + totalSave);
-                                System.out.println();
+                                System.out.println("Account Balance: " + totalSave + "\n");
+                                save.createMonthlyStatement();
                             } if (wdOpt == 2) {
-                                System.out.println(save);
+                                System.out.println(save + "\n");
+                                save.createMonthlyStatement();
                             }
                     } if (saveOpt == 2) {
                         HighInterestSavings hiSave = new HighInterestSavings(n, an, b);
@@ -143,21 +154,12 @@ public class BankAccountMenu {
                             System.out.print("Amount to withdraw: ");
                             double amount = s.nextDouble();
 
-                            double B = b;
-
-                            System.out.print("Balance is within Min. Balance after withdrawal: " + hiSave.verifyMinimumBalance(B));
-
-                            System.out.println();
-                            
-                            if (hiSave.verifyMinimumBalance(B) == true) {
-                                hiSave.withdraw(amount);
-                                System.out.println(hiSave);
-                            } else if (!hiSave.verifyMinimumBalance(B) == true) {
-                                System.out.println("Insufficient Balance.\n");
-                                System.out.println(hiSave);
-                            }
+                            hiSave.withdraw(amount);
+                            System.out.println("\n" + hiSave + "\n");
+                            hiSave.createMonthlyStatement();
                         } if (wdOpt == 2) {
-                            System.out.println(hiSave);
+                            System.out.println(hiSave + "\n");
+                            hiSave.createMonthlyStatement();
                         }
                     }
             } if (t == 4) {

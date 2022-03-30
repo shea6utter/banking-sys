@@ -43,7 +43,7 @@ public class HighInterestSavings extends SavingsAccount {
       if (this.verifyMinimumBalance(tempAmount)) {
          this.balance -= mb;
       } else {
-         System.out.println("Insufficient Balance. ");
+         System.out.println("Insufficient Balance.\n");
       }
    }
 
