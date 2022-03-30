@@ -53,9 +53,7 @@ public class CertificationOfDeposit extends BankAccount {
      
   }
 
-  public void withdraw() {
-     
-  }
+  public void withdraw() {}
 
    @Override
    public void createMonthlyStatement() {

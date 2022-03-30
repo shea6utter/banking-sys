@@ -69,11 +69,6 @@ public class ServiceChargeChecking extends CheckingAccount {
             System.out.println("Not enough balance.");
         }
     }
-    
-    @Override
-    public void deposit(final double b) {
-        this.getBalance() ;
-    }
 
     @Override
     public void createMonthlyStatement() {

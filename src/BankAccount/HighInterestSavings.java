@@ -38,6 +38,11 @@ public class HighInterestSavings extends SavingsAccount {
       this.interestRate = ir;
    }
 
+   @Override
+   public void postInterest() {
+      this.balance += this.getBalance() * this.interestRate;
+   }
+   
    public void withdraw(final double mb) {
       final double tempAmount = this.getBalance() - mb;
       if (this.verifyMinimumBalance(tempAmount)) {
@@ -47,11 +52,6 @@ public class HighInterestSavings extends SavingsAccount {
       }
    }
 
-
-   @Override
-   public void postInterest() {
-      this.balance += this.getBalance() * this.interestRate;
-   }
 
    @Override
    public void createMonthlyStatement() {
